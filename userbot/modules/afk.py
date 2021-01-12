@@ -16,9 +16,9 @@ from userbot.events import register
 
 # ========================= CONSTANTS ============================
 AFKSTR = [
-    "I'm busy right now. Please talk in a bag and when I come back you can just give me the bag!",
-    "I'm away right now. If you need anything, leave a message after the beep:\n`beeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeep`!",
-    "You missed me, next time aim better.",
+    "Gw lagi offline sekarang, kalau ada hal penting PM aja ntar gw balas!",
+    "Gw lagi afk bang`!",
+    "Gw lagi tidur, ntar gw balas.",
     "I'll be back in a few minutes and if I'm not...,\nwait longer.",
     "I'm not here right now, so I'm probably somewhere else.",
     "Roses are red,\nViolets are blue,\nLeave me a message,\nAnd I'll get back to you.",
@@ -84,9 +84,9 @@ async def mention_afk(mention):
                 afk_str = f"`{int(seconds)}s` ago"
             if mention.sender_id not in USERS:
                 if AFKREASON:
-                    await mention.reply("I'm AFK right now."
-                                        f"\nBecause I'm `{AFKREASON}`."
-                                        f"\nAFK since: {afk_str}")
+                    await mention.reply("Gw lagi offline sekarang."
+                                        f"\nkarena `{AFKREASON}`."
+                                        f"\noffline sejak: {afk_str}")
                 else:
                     await mention.reply(str(choice(AFKSTR)))
                 USERS.update({mention.sender_id: 1})
@@ -94,7 +94,7 @@ async def mention_afk(mention):
             elif mention.sender_id in USERS:
                 if USERS[mention.sender_id] % randint(2, 4) == 0:
                     if AFKREASON:
-                        await mention.reply("I'm still AFK."
+                        await mention.reply("Gw lagi afk...."
                                             f"\nReason: `{AFKREASON}`."
                                             f"\nAFK from: {afk_str}")
                     else:
@@ -157,8 +157,8 @@ async def afk_on_pm(sender):
                 afk_str = f"`{int(seconds)}s` ago"
             if sender.sender_id not in USERS:
                 if AFKREASON:
-                    await sender.reply("I'm AFK right now."
-                                       f"\nReason: `{AFKREASON}`."
+                    await sender.reply("Gw lagi off."
+                                       f"\nKarena: `{AFKREASON}`."
                                        f"\nAFK since: {afk_str}")
                 else:
                     await sender.reply(str(choice(AFKSTR)))
@@ -167,7 +167,7 @@ async def afk_on_pm(sender):
             elif apprv and sender.sender_id in USERS:
                 if USERS[sender.sender_id] % randint(2, 4) == 0:
                     if AFKREASON:
-                        await sender.reply("I'm still AFK."
+                        await sender.reply("Gw lagi AFK."
                                            f"\nReason: `{AFKREASON}`."
                                            f"\nAFK from: {afk_str}")
                     else:
@@ -195,10 +195,10 @@ async def set_afk(afk_e):
     afk_start = start1.replace(microsecond=0)
     if string:
         AFKREASON = string
-        await afk_e.edit("Going AFK!"
-                         f"\nReason: `{string}`")
+        await afk_e.edit("AFK dulu slur!"
+                         f"\nKarena: `{string}`")
     else:
-        await afk_e.edit("Going AFK!")
+        await afk_e.edit("Pamit dulu!")
     if BOTLOG:
         await afk_e.client.send_message(BOTLOG_CHATID, "#AFK\nYou went AFK!")
     ISAFK = True
