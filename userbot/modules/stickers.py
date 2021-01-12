@@ -20,15 +20,15 @@ from telethon.tl.types import DocumentAttributeSticker
 
 KANGING_STR = [
     "Using Witchery to kang this sticker...",
-    "Plagiarising hehe...",
-    "Inviting this sticker over to my pack...",
-    "Kanging this sticker...",
-    "Hey that's a nice sticker!\nMind if I kang?!..",
-    "hehe me stel ur stikér\nhehe.",
-    "Ay look over there (☉｡☉)!→\nWhile I kang this...",
-    "Roses are red violets are blue, kanging this sticker so my pacc looks cool",
-    "Imprisoning this sticker...",
-    "Mr.Steal Your Sticker is stealing this sticker... ",
+    "Minta stickernya hehe...",
+    "Punten, minta stickernya...",
+    "Gw save ya slur...",
+    "Save ah..",
+    "Gw nyuri stickernya ya...",
+    "Mantep nih, izin save hehe...",
+    "Cakep nih stickernya, gw save ya...",
+    "Bagus juga stickernya...",
+    "Izin save stickernya... ",
 ]
 
 
@@ -72,9 +72,9 @@ async def kang(args):
             is_anim = True
             photo = 1
         else:
-            return await args.edit("`Unsupported File!`")
+            return await args.edit("`gak support ini cuk!`")
     else:
-        return await args.edit("`I can't kang that...`")
+        return await args.edit("`gak bisa di save ini...`")
 
     if photo:
         splat = args.text.split()
@@ -234,7 +234,7 @@ async def kang(args):
                 await bot.send_read_acknowledge(conv.chat_id)
 
         await args.edit(
-            "`Sticker kanged successfully!`"
+            "`Sticker berhasil di save!`"
             f"\nPack can be found [here](t.me/addstickers/{packname})",
             parse_mode='md')
 
